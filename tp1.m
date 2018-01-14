@@ -17,19 +17,12 @@ max_classe = max(label) ;
  acc_c = 1;
  k=1;
  for split_ratio = 0.1:0.05:0.95
-      %disp('pausing')
-      %pause
-      %close all
-      %affichage base
-      %figure(1), axis([-1 1 -1 1]), hold on
+   
       [data_app, label_app, data_tst, label_tst] = splitbase(data, label, split_ratio);
-      %récupération des étiquettes
-      %drawdata(data_app, label_app, 'app')
-      %k = input('number of neighbors k: ');
+      
       answer_vec = zeros(length(data_tst),1);
       for i = 1:length(data_tst)
         dist = euclideanDistance(data_tst(:,i), data_app, label_app, k);
-        %expected_label = labeltst(:,i)
         answer_vec(i) = isCorrect(dist, unique(label_tst));
       end;
       diff_vec = answer_vec-label_tst';
