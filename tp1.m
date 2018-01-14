@@ -13,10 +13,10 @@ max_classe = max(label) ;
 %base d'apprentissage = tirage aléatoire des exemples
 %split_ratio = input('ratio apprentissage/test : ') ;
 
- accuracy = zeros(19, 1);
+ accuracy = zeros(18, 1);
  acc_c = 1;
  k=1;
- for split_ratio = 0.1:0.05:1
+ for split_ratio = 0.1:0.05:0.95
       %disp('pausing')
       %pause
       %close all
@@ -34,16 +34,16 @@ max_classe = max(label) ;
         answer_vec(i) = isCorrect(dist, unique(label_tst));
       end;
       diff_vec = answer_vec-label_tst';
-      errors = sum(abs(diff_vec)!=0);
+      errors = sum(diff_vec!=0);
       accuracy(acc_c) = 1-errors/length(data_tst);
       acc_c = acc_c +1;
  end
- y = [0.1:0.05:1]
+ y = [0.1:0.05:0.95]
  accuracy
  size(accuracy)
  size(y)
  figure(2)
- plot(y, accuracy)
+ plot([0.1:0.05:0.95], accuracy)
 
 #{
 %génération des sorties désirées
