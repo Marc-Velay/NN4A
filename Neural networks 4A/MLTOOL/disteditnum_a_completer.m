@@ -1,0 +1,103 @@
+function [distance, match] = disteditnum_a_completer(A,B)
+%
+% DISTEDIT - distance d'édition avec attributs numériques
+%
+% SYNTAXE :
+%
+% distance = DISTEDITNUM(A, B);
+%
+% Calcul la distance d'édition entre les deux chaînes A et B par
+% l'algorithme de Wagner et Fisher.
+% Les coûts d'insertion et de suppression sont proportionnels
+% à la norme des composantes vectorielles de l'élément.
+% Les coûts de substitution sont proportionnels à la norme
+% de la différence des composantes vectorielles des deux éléments
+% (distance euclidienne).
+% 
+%
+% ARGUMENTS :
+%
+%
+% A, B	: Les deux chaînes à comparer : les vecteurs
+%          numériques constituant les chaînes sont rangés en ligne :
+%          [ ---- symbole 1 ----- ;
+%            ---- symbole 2 ----- ;
+%                     :
+%            ---- symbole N ----- ]
+%
+%
+% VALEURS DE RETOUR :
+%
+% distance 	: la distance d'édition entre A et B
+% match     : chemin de matching
+%
+% COMPATIBILITE :
+%
+% 	Matlab 4.3+
+%
+% VOIR AUSSI :
+%
+%  DISTEDIT  BELDIST  DTW
+% 
+
+% M. Milgram, C. Achard, etc. (LIS/PARC - UPMC)
+% Création : <= 96
+% Version : 1.2
+% Derniere révision : 
+%  - B.Gas (1/11/2000) <gas@ccr.jussieu.fr>
+%  - B.Gas (27/1/2001) : mise à jour tbx RdF
+
+[n,dim]=size(A);
+[m,dim1]=size(B);
+
+if dim1~=dim, 
+   error('[DISTEDITNUM] erreur: (<A> et <B> doivent avoir même nombre de colonnes)');
+end;
+
+%calcul de cout des éléments (suppression/insertion)
+for i=1:n, cout_A(i)=norm(A(i,:)); end;
+for i=1:m, cout_B(i)=norm(B(i,:)); end;
+
+%init matrice D
+D=ones(n,m)*inf;
+
+% bcle de récurrence sur n,m
+% Attention (1,1) correspond en fait à (0,0) d'où décalage
+
+D(1,1)=0;
+
+% %remplissage première colonne
+% for ...
+% %remplissage première ligne
+% for ...
+% 
+% 
+% caclcul de la distance
+% for ...
+% 	for ...
+% 		U =...
+% 		V =...
+% 		W =...
+% 		[D(i,j) P(i,j)] = min([U,V,W]);
+% 	end;
+% end;
+% distance=D(n+1,m+1);
+%
+%détermination du chemin de matching
+%
+% i = n+1 ;
+% j = m+1 ;
+% match = [] ;
+% while ...
+%         switch P(i,j)
+%         case ...
+%                 match ...
+%         case ...
+%                 match ...
+%         case ... 
+%                 match ...
+%     end
+% end
+
+
+
