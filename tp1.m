@@ -9,6 +9,8 @@ load(sprintf('base%d', nb_base)) ;
 max_classe = max(label) ;
 
 %affichage base
+figure(1), axis([-1 1 -1 1]), hold on
+drawdata(data, label, 'all')
 
 %base d'apprentissage = tirage aléatoire des exemples
 %split_ratio = input('ratio apprentissage/test : ') ;
@@ -33,7 +35,7 @@ max_classe = max(label) ;
       disp('accuracy: '), disp(1-errors/length(data_tst))
       confusion_matrix = confusion(answer_vec, label_tst, unique(label_tst))
       disp('Paused, press enter')
-      pause
+      %pause
  end
  figure(2)
  plot([0.1:0.05:0.95], accuracy)
