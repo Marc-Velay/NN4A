@@ -14,14 +14,14 @@ drawdata(data, label, 'all')
 
 %base d'apprentissage = tirage aléatoire des exemples
 %split_ratio = input('ratio apprentissage/test : ') ;
-
- accuracy = zeros(15, 1);
+ max_k = 40;
+ accuracy = zeros(max_k, 1);
  acc_c = 1;
  split_ratio=0.8;
    
  [data_app, label_app, data_tst, label_tst] = splitbase(data, label, split_ratio);
       
- for k = 1:15
+ for k = 1:max_k
       answer_vec = zeros(length(data_tst),1);
       for i = 1:length(data_tst)
         dist = euclideanDistance(data_tst(:,i), data_app, label_app, k);
@@ -38,4 +38,4 @@ drawdata(data, label, 'all')
       %pause
  end
  figure(2)
- plot([1:15], accuracy)
+ plot([1:max_k], accuracy)

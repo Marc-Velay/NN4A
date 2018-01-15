@@ -16,9 +16,9 @@ drawdata(data, label, 'all')
 %split_ratio = input('ratio apprentissage/test : ') ;
 
 acc_c = 1;
-max_k=10;
+max_k=30;
 accuracy = zeros(18, max_k);
-for split_ratio = 0.1:0.05:0.95
+for split_ratio = 0.5:0.01:0.95
 
     [data_app, label_app, data_tst, label_tst] = splitbase(data, label, split_ratio);
     
